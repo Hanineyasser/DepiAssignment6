@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #eef1f6;
+}
+
+nav {
+    padding: 10px 96px;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    
+    text-decoration: none;
+}
+nav .logo{
+    padding: 6px 16px 6px 0px;
+}
+nav .logo a{
+    color: rgb(17, 24, 39);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    vertical-align: top;
+}
+nav .options {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 8px 190px;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(17, 24, 39); 
+    font-weight: 500;
+}
+
+nav .options li {
+    list-style: none;
+}
+
+nav .options li a {
+    text-decoration: none;
+    color: rgb(17, 24, 39);
+}
+
+/* Lightning/Sun icon section */
+nav .lightning {
+    padding: 20px;
+}
+
+nav .lightning svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Join Pro Network section */
+nav div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav div:last-child i {
+    font-size: 16px;
+    color: rgb(17, 24, 39);
+}
+
+nav div:last-child a {
+    text-decoration: none;
+    color: rgb(17, 24, 39);
+    font-weight: 500;
+    font-size: 14px;
+}
