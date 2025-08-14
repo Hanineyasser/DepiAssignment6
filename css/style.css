@@ -14,20 +14,6 @@
     opacity: 1;
     visibility: visible;
 }
-/* Overlay for menu open state */
-/* .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #42454e;
-    opacity: 0.95;
-    z-index: 9998;
-    pointer-events: auto;
-    transition: opacity 0.3s;
-    visibility: hidden;
-} */
 .lightning ul {
     display: none;
 }
@@ -55,9 +41,10 @@
     background: #f5f5f5;
 }
 
-body.freeze-scroll {
+body.freeze-scroll,
+body.settings-panel-open {
     overflow: hidden !important;
-    height: 100vh;
+    /* height: 100vh; */
 }
 * {
     margin: 0;
@@ -2502,7 +2489,6 @@ body.settings-panel-open .floating-customize-btn {
     background-color: transparent;
 }
 
-
 .settings-section {
     margin-bottom: 2.25rem;
 }
@@ -2519,7 +2505,6 @@ body.settings-panel-open .floating-customize-btn {
 .settings-section h4 i {
     color: #a0aec0;
 }
-
 
 /* Color Grid */
 .color-grid {
@@ -2605,7 +2590,6 @@ body.settings-panel-open .floating-customize-btn {
     color: #3b82f6;
 }
 
-
 /* Panel Footer */
 .settings-panel-footer {
     padding: 1.25rem 1.75rem;
@@ -2650,7 +2634,6 @@ body.settings-panel-open .floating-customize-btn {
 .btn-show-code:hover {
     background-color: #6d44d1;
 }
-
 
 /* Custom Toggle Switch Styles */
 .switch {
@@ -2703,4 +2686,31 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+/* --- Color Picker Styles --- */
+.color-input-wrapper {
+    position: relative; /* Needed for positioning the color picker */
+}
+
+.color-picker-input {
+    /* Style the color input to look like a swatch */
+    /* -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; */
+    width: 40px !important;
+    height: 35px;
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* This targets the color selection area inside the input */
+.color-picker-input::-webkit-color-swatch {
+    border-radius: 50%;
+    border: none;
+}
+.color-picker-input::-moz-color-swatch {
+    border-radius: 50%;
+    border: none;
 }
