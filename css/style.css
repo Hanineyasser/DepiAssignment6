@@ -329,7 +329,7 @@ nav .join {
     padding: 0.625rem;
 }
 nav .join:hover {
-    background-color: #c92d2d;
+    background-color: #c92d2d !important;
 }
 nav .join:hover svg {
     fill: transparent;
@@ -433,7 +433,7 @@ header .search-container .search-button {
     text-align: center;
 }
 header .search-container .search-button:hover {
-    background-color: var(--primary-color-dark);
+    background-color: #c92d2d;
 }
 
 header .search-container .search-button:hover a {
@@ -2038,6 +2038,10 @@ footer .links {
         width: 100%;
         max-width: 100%;
         margin-bottom: 1rem;
+    }
+    header .search-container .search-button:hover {
+        background-color: #f03d3d;
+        color: white;
     }
 
     header .search-container .inputs {
