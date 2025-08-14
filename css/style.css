@@ -1,3 +1,26 @@
+:root {
+    --primary-color: #7450d7;
+    --success-color: #b33f32;
+    --warning-color: #fc9231;
+    --danger-color: #f03d3d;
+    --info-color: #3d7a81;
+    --text-color: rgb(17, 24, 39);
+    --background-color: white;
+}
+
+/* Base and Utility Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    font-family: Inter, sans-serif;
+}
+
+body.freeze-scroll,
+body.settings-panel-open {
+    overflow: hidden !important;
+}
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -71,7 +94,7 @@ nav * {
     background-color: white;
 }
 nav .join {
-    background-color: #d85151;
+    background-color: var(--primary-color) !important;
 }
 nav .logo {
     padding: 0.375rem 1rem 0.375rem 0;
@@ -399,7 +422,7 @@ header .search-container .zipCode {
     min-width: 3.75rem;
 }
 header .search-container .search-button {
-    background-color: #d85151;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -410,15 +433,15 @@ header .search-container .search-button {
     text-align: center;
 }
 header .search-container .search-button:hover {
-    background-color: #c92d2d;
+    background-color: var(--primary-color-dark);
 }
 
 header .search-container .search-button:hover a {
-    background-color: #c92d2d;
+    background-color: var(--primary-color-dark);
 }
 
 header .search-container .search-button a {
-    background-color: #d85151;
+    background-color: var(--primary-color);
     text-decoration: none;
     color: white;
 }
@@ -1045,27 +1068,29 @@ header .servicesList li:hover {
 }
 .pro .left .firstButton {
     display: inline-block;
-    background-color: inherit;
+    background-color: var(--primary-color) !important;
 }
-.pro .left .secondButton {
+.pro .left .secondButton,
+.pro .left .firstButton {
     display: inline-block;
     background-color: inherit;
+    border-radius: 0.5rem !important;
 }
 .pro .left button {
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     font-weight: 500;
     font-size: 1rem;
-    border: 0.125rem solid #d85151;
+    border: 0.125rem solid var(--primary-color);
     transition: all 0.3s ease;
 }
 .pro .left .leftButton {
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    background-color: inherit;
-    border-radius: 0.5rem;
-    border: 0.125rem solid #d85151;
+    background-color: var(--primary-color) !important;
+    border-radius: 1rem;
+    border: 0.125rem solid var(--primary-color);
 }
 .pro .left .firstButton button::before {
     content: "+";
@@ -1117,7 +1142,7 @@ header .servicesList li:hover {
 }
 
 .pro .left .firstButton button {
-    background-color: #d85151;
+    background-color: var(--primary-color);
     color: white;
 }
 .pro .left .firstButton button:hover {
@@ -1733,7 +1758,7 @@ footer .upperPart p {
     line-height: 1.6875rem;
 }
 footer .upperPart button {
-    background-color: #d85151;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -1815,6 +1840,9 @@ footer .main-content {
     flex-direction: row;
     gap: 3.75rem;
     margin-bottom: 2.5rem;
+}
+footer .main-content .leftPart svg path[fill="var(--primary-color)"] {
+    fill: var(--primary-color);
 }
 footer .leftPart {
     width: 25%;
@@ -2250,6 +2278,10 @@ body.dark-mode .pricing,
 body.dark-mode .pricing * {
     background-color: #111827 !important;
 }
+body.dark-mode nav .join *,
+body.dark-mode nav .join {
+    background-color: var(--primary-color) !important;
+}
 body.dark-mode .browse .options svg {
     background-color: #333d4c !important;
     color: white;
@@ -2359,9 +2391,9 @@ body.dark-mode button:hover {
     padding: 5px;
     color: #4a5568;
     font-size: 10px;
-    font-weight: 500; 
+    font-weight: 500;
     text-transform: uppercase;
-    transform: rotate(180deg); 
+    transform: rotate(180deg);
 }
 /* --- Floating Button Icon Spinning Wheel Animation --- */
 @keyframes spin-wheel-in-place {
@@ -2410,7 +2442,6 @@ body.settings-panel-open .floating-customize-btn {
     transition: right 0.4s ease, opacity 0.4s ease;
 }
 
-
 /* Overlay for the settings panel */
 .settings-overlay {
     position: fixed;
@@ -2439,12 +2470,13 @@ body.settings-panel-open .floating-customize-btn {
     max-width: 400px;
     height: 100vh;
     background-color: #fff;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
     z-index: 2000;
     transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
     flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
 }
 
 .settings-panel.show {
@@ -2548,7 +2580,7 @@ body.settings-panel-open .floating-customize-btn {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Direction Toggle */
@@ -2627,71 +2659,70 @@ body.settings-panel-open .floating-customize-btn {
 }
 
 .btn-show-code {
-    background-color: #7450d7;
-    border-color: #7450d7;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color-dark);
     color: #fff;
 }
 .btn-show-code:hover {
-    background-color: #6d44d1;
+    background-color: brighten(90%);
 }
 
 /* Custom Toggle Switch Styles */
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 26px;
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #e2e8f0;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e2e8f0;
+    transition: 0.4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 input:checked + .slider {
-  background-color: #7450d7;
+    background-color: var(--primary-color);
 }
 
 input:checked + .slider:before {
-  transform: translateX(20px);
+    transform: translateX(20px);
 }
 
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 /* --- Color Picker Styles --- */
 .color-input-wrapper {
     position: relative; /* Needed for positioning the color picker */
 }
-
 
 .color-picker-input {
     /* Style the color input to look like a swatch */
@@ -2701,7 +2732,7 @@ input:checked + .slider:before {
     width: 40px !important;
     height: 35px;
     background-color: transparent;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
     border-radius: 50%;
 }

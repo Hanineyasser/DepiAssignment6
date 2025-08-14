@@ -34,7 +34,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34">
                     <path
                         d="M34.5 16.894v10.731c0 3.506-2.869 6.375-6.375 6.375H17.5h-.85C7.725 33.575.5 26.138.5 17c0-9.35 7.65-17 17-17s17 7.544 17 16.894z"
-                        fill="#d85151"></path>
+                        fill="var(--primary-color)"></path>
                     <g fill-rule="evenodd">
                         <path
                             d="M17.5 13.258c-3.101 0-5.655 2.554-5.655 5.655s2.554 5.655 5.655 5.655 5.655-2.554 5.655-5.655-2.554-5.655-5.655-5.655zm-9.433 5.655c0-5.187 4.246-9.433 9.433-9.433s9.433 4.246 9.433 9.433a9.36 9.36 0 0 1-1.569 5.192l2.397 2.397a1.89 1.89 0 0 1 0 2.671 1.89 1.89 0 0 1-2.671 0l-2.397-2.397a9.36 9.36 0 0 1-5.192 1.569c-5.187 0-9.433-4.246-9.433-9.433z"
@@ -53,7 +53,7 @@
                     <path
                         fill-rule="evenodd"
                         d="M23.663 8.429a2.41 2.41 0 0 0-2.408 2.408 2.41 2.41 0 0 0 2.408 2.408 2.41 2.41 0 0 0 2.408-2.408 2.41 2.41 0 0 0-2.408-2.408zm-5.242 2.408c0-2.895 2.347-5.242 5.242-5.242s5.242 2.347 5.242 5.242-2.347 5.242-5.242 5.242-5.242-2.347-5.242-5.242z"
-                        fill="currentColor"></path>
+                        fill="var(--primary-color)"></path>
                 </svg>
                 <a href="#">Finder</a>
             </div>
@@ -1331,7 +1331,7 @@
                         height="34">
                         <path
                             d="M34.5 16.894v10.731c0 3.506-2.869 6.375-6.375 6.375H17.5h-.85C7.725 33.575.5 26.138.5 17c0-9.35 7.65-17 17-17s17 7.544 17 16.894z"
-                            fill="#d85151"></path>
+                            fill="var(--primary-color)"></path>
                         <g fill-rule="evenodd">
                             <path
                                 d="M17.5 13.258c-3.101 0-5.655 2.554-5.655 5.655s2.554 5.655 5.655 5.655 5.655-2.554 5.655-5.655-2.554-5.655-5.655-5.655zm-9.433 5.655c0-5.187 4.246-9.433 9.433-9.433s9.433 4.246 9.433 9.433a9.36 9.36 0 0 1-1.569 5.192l2.397 2.397a1.89 1.89 0 0 1 0 2.671 1.89 1.89 0 0 1-2.671 0l-2.397-2.397a9.36 9.36 0 0 1-5.192 1.569c-5.187 0-9.433-4.246-9.433-9.433z"
@@ -1350,7 +1350,7 @@
                         <path
                             fill-rule="evenodd"
                             d="M23.663 8.429a2.41 2.41 0 0 0-2.408 2.408 2.41 2.41 0 0 0 2.408 2.408 2.41 2.41 0 0 0 2.408-2.408 2.41 2.41 0 0 0-2.408-2.408zm-5.242 2.408c0-2.895 2.347-5.242 5.242-5.242s5.242 2.347 5.242 5.242-2.347 5.242-5.242 5.242-5.242-2.347-5.242-5.242z"
-                            fill="rgb(17, 24, 39)"></path>
+                            fill="var(--primary-color)"></path>
                     </svg>
                     <a href="#">Finder</a>
                     <p>
@@ -1446,78 +1446,75 @@
     </div>
         <span>CUSTOMIZE</span>
     </div>
-    <!-- Settings Panel Overlay -->
-<div class="settings-overlay"></div>
-
-<!-- Settings Panel -->
-<div class="settings-panel">
-    <div class="settings-panel-header">
-        <h2>Customize theme</h2>
-        <button class="settings-close-btn">&times;</button>
-    </div>
-    <div class="settings-panel-body">
-        <div class="settings-section">
-            <h4><i class="fas fa-palette"></i> Colors</h4>
-            <div class="color-grid">
-    <div class="color-item">
-        <label for="primary">Primary</label>
-        <div class="color-input-wrapper">
-            <input type="text" class="color-text-input" id="primary" value="#7450d7" readonly>
-            <!-- Changed to a color input -->
-            <input type="color" class="color-picker-input" value="#7450d7">
-        </div>
-    </div>
-    <div class="color-item">
-        <label for="success">Success</label>
-        <div class="color-input-wrapper">
-            <input type="text" class="color-text-input" id="success" value="#b33f32" readonly>
-            <input type="color" class="color-picker-input" value="#b33f32">
-        </div>
-    </div>
-    <div class="color-item">
-        <label for="warning">Warning</label>
-        <div class="color-input-wrapper">
-            <input type="text" class="color-text-input" id="warning" value="#fc9231" readonly>
-            <input type="color" class="color-picker-input" value="#fc9231">
-        </div>
-    </div>
-    <div class="color-item">
-        <label for="danger">Danger</label>
-        <div class="color-input-wrapper">
-            <input type="text" class="color-text-input" id="danger" value="#f03d3d" readonly>
-            <input type="color" class="color-picker-input" value="#f03d3d">
-        </div>
-    </div>
-    <div class="color-item">
-        <label for="info">Info</label>
-        <div class="color-input-wrapper">
-            <input type="text" class="color-text-input" id="info" value="#3d7a81" readonly>
-            <input type="color" class="color-picker-input" value="#3d7a81">
-        </div>
-    </div>
-</div>
-        </div>
-
-        <div class="settings-section">
-            <h4><i class="fas fa-exchange-alt"></i> Direction</h4>
-            <div class="direction-toggle">
-                <div class="direction-text">
-                    <label for="rtl-toggle">RTL</label>
-                    <span>Change text direction</span>
+    <!-- Settings Panel and Overlay -->
+        <div class="settings-overlay"></div>
+        <div class="settings-panel">
+            <div class="settings-panel-header">
+                <h2>Customize theme</h2>
+                <button class="settings-close-btn">&times;</button>
+            </div>
+            <div class="settings-panel-body">
+                <div class="settings-section">
+                    <h4><i class="fas fa-palette"></i> Colors</h4>
+                    <div class="color-grid">
+                        <div class="color-item">
+                            <label for="primary">Primary</label>
+                            <div class="color-input-wrapper">
+                                <input type="text" class="color-text-input" id="primary" value="#7450d7" readonly>
+                                <input type="color" class="color-picker-input" value="#7450d7" data-color="--primary-color">
+                            </div>
+                        </div>
+                        <div class="color-item">
+                            <label for="success">Success</label>
+                            <div class="color-input-wrapper">
+                                <input type="text" class="color-text-input" id="success" value="#b33f32" readonly>
+                                <input type="color" class="color-picker-input" value="#b33f32" data-color="--success-color">
+                            </div>
+                        </div>
+                        <div class="color-item">
+                            <label for="warning">Warning</label>
+                            <div class="color-input-wrapper">
+                                <input type="text" class="color-text-input" id="warning" value="#fc9231" readonly>
+                                <input type="color" class="color-picker-input" value="#fc9231" data-color="--warning-color">
+                            </div>
+                        </div>
+                        <div class="color-item">
+                            <label for="danger">Danger</label>
+                            <div class="color-input-wrapper">
+                                <input type="text" class="color-text-input" id="danger" value="#f03d3d" readonly>
+                                <input type="color" class="color-picker-input" value="#f03d3d" data-color="--danger-color">
+                            </div>
+                        </div>
+                        <div class="color-item">
+                            <label for="info">Info</label>
+                            <div class="color-input-wrapper">
+                                <input type="text" class="color-text-input" id="info" value="#3d7a81" readonly>
+                                <input type="color" class="color-picker-input" value="#3d7a81" data-color="--info-color">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <label class="switch">
-                    <input type="checkbox" id="rtl-toggle">
-                    <span class="slider round"></span>
-                </label>
+
+                <div class="settings-section">
+                    <h4><i class="fas fa-exchange-alt"></i> Direction</h4>
+                    <div class="direction-toggle">
+                        <div class="direction-text">
+                            <label for="rtl-toggle">RTL</label>
+                            <span>Change text direction</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="rtl-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <p class="info-text"><i class="fas fa-info-circle"></i> To switch the text direction of your...</p>
+            </div>
+            <div class="settings-panel-footer">
+                <button class="btn-reset"><i class="fas fa-trash-alt"></i> Reset</button>
+                <button class="btn-show-code"><i class="fas fa-code"></i> Show code</button>
             </div>
         </div>
-        <p class="info-text"><i class="fas fa-info-circle"></i> To switch the text direction of your...</p>
-    </div>
-    <div class="settings-panel-footer">
-        <button class="btn-reset"><i class="fas fa-trash-alt"></i> Reset</button>
-        <button class="btn-show-code"><i class="fas fa-code"></i> Show code</button>
-    </div>
-</div>
           <!-- end floating button -->
         <script src="js/script.js"></script>
     </body>

@@ -75,50 +75,57 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-// --- Settings Panel Logic ---
-document.addEventListener('DOMContentLoaded', function() {
-    const customizeBtn = document.querySelector('.floating-customize-btn');
-    const settingsPanel = document.querySelector('.settings-panel');
-    const closeBtn = document.querySelector('.settings-close-btn');
-    const settingsOverlay = document.querySelector('.settings-overlay');
-
-    // --- NEW: Color Picker Logic ---
-    const colorPickers = document.querySelectorAll('.color-picker-input');
-    colorPickers.forEach(picker => {
-        // Set the picker's background to its current value on load
-        picker.style.backgroundColor = picker.value;
-
-        picker.addEventListener('input', (event) => {
-            const newColor = event.target.value;
-            const textInput = event.target.previousElementSibling;
-
-            // Update the text field with the new color
-            if (textInput && textInput.classList.contains('color-text-input')) {
-                textInput.value = newColor;
-            }
-
-            // Update the picker's background color to match the new color
-            event.target.style.backgroundColor = newColor;
-        });
-    });
-    // --- End of New Logic ---
+document.addEventListener("DOMContentLoaded", function () {
+    // --- Settings Panel Logic ---
+    const customizeBtn = document.querySelector(".floating-customize-btn");
+    const settingsPanel = document.querySelector(".settings-panel");
+    const closeBtn = document.querySelector(".settings-close-btn");
+    const settingsOverlay = document.querySelector(".settings-overlay");
 
     if (customizeBtn && settingsPanel && closeBtn && settingsOverlay) {
-        
         const openPanel = () => {
-            settingsPanel.classList.add('show');
-            settingsOverlay.classList.add('active');
-            document.body.classList.add('settings-panel-open');
+            settingsPanel.classList.add("show");
+            settingsOverlay.classList.add("active");
+            document.body.classList.add("settings-panel-open");
         };
 
         const closePanel = () => {
-            settingsPanel.classList.remove('show');
-            settingsOverlay.classList.remove('active');
-            document.body.classList.remove('settings-panel-open');
+            settingsPanel.classList.remove("show");
+            settingsOverlay.classList.remove("active");
+            document.body.classList.remove("settings-panel-open");
         };
 
-        customizeBtn.addEventListener('click', openPanel);
-        closeBtn.addEventListener('click', closePanel);
-        settingsOverlay.addEventListener('click', closePanel);
+        customizeBtn.addEventListener("click", openPanel);
+        closeBtn.addEventListener("click", closePanel);
+        settingsOverlay.addEventListener("click", closePanel);
     }
+
+    // --- Color Picker Logic with CSS Variables ---
+    const colorPickers = document.querySelectorAll(".color-picker-input");
+    colorPickers.forEach((picker) => {
+        // This line was missing the variable declaration
+        const colorVariable = picker.dataset.color;
+
+        picker.style.backgroundColor = picker.value;
+
+        picker.addEventListener("input", (event) => {
+            const newColor = event.target.value;
+            const textInput = event.target.previousElementSibling;
+
+            if (textInput && textInput.classList.contains("color-text-input")) {
+                textInput.value = newColor;
+            }
+
+            event.target.style.backgroundColor = newColor;
+
+            // Now this will work correctly
+            if (colorVariable) {
+                document.documentElement.style.setProperty(
+                    colorVariable,
+                    newColor
+                );
+            }
+        });
+    });
 });
+
