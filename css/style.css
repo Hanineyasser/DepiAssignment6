@@ -1,3 +1,64 @@
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1040;
+}
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+/* Overlay for menu open state */
+/* .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #42454e;
+    opacity: 0.95;
+    z-index: 9998;
+    pointer-events: auto;
+    transition: opacity 0.3s;
+    visibility: hidden;
+} */
+.lightning ul {
+    display: none;
+}
+.lightning {
+    position: relative;
+}
+.lightning ul.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 80px;
+    background: inherit;
+    color: inherit;
+    z-index: 1000;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+}
+.lightning ul li {
+    padding: 0.5rem 1.5rem;
+    list-style: none;
+}
+.lightning ul li:hover {
+    background: #f5f5f5;
+}
+
+body.freeze-scroll {
+    overflow: hidden !important;
+    height: 100vh;
+}
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +72,7 @@ nav {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     text-decoration: none;
     position: sticky;
     top: 0;
@@ -42,9 +103,9 @@ nav .logo a {
 nav .services {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     gap: 1.5rem;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 nav .nav-logos {
@@ -237,14 +298,16 @@ nav .lightning svg {
     width: 1.25rem;
     height: 1.5rem;
 }
-nav .lightning svg:hover {
+nav .lightning .fa-moon {
+    width: 1.25rem;
+    height: 1.5rem;
+}
+nav .lightning svg:hover,
+nav .lightning .fa-moon:hover {
     animation: singlePop 0.6s ease-out;
 }
 i {
     width: 2.5rem;
-}
-i:hover {
-    animation: shake 0.8s ease-in-out;
 }
 nav .join {
     background-color: #d85151;
@@ -668,7 +731,6 @@ header .servicesList li:hover {
     margin-top: 1.25rem;
 }
 .third .three > div {
-    
     min-width: 0;
     background-color: inherit;
     display: block;
@@ -928,6 +990,7 @@ header .servicesList li:hover {
     padding: 1.875rem;
     background-color: inherit;
 }
+
 .howItWork .step1 svg,
 .howItWork .step2 svg,
 .howItWork .step3 svg {
@@ -959,7 +1022,6 @@ header .servicesList li:hover {
 /* end howItWork */
 /* start pro */
 .pro {
-    padding-bottom: 6.25rem;
     font-family: Inter, sans-serif;
     font-style: normal;
     background-color: #ffffff;
@@ -1033,16 +1095,38 @@ header .servicesList li:hover {
 }
 
 @keyframes singlePop {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.4); }
-    60% { transform: scale(1.1); }
-    100% { transform: scale(1.2); }
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.4);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-0.1875rem); }
-    20%, 40%, 60%, 80% { transform: translateX(0.1875rem); }
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-0.1875rem);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(0.1875rem);
+    }
 }
 
 .pro .left .firstButton button {
@@ -1071,12 +1155,30 @@ header .servicesList li:hover {
 }
 
 @keyframes arrowMove {
-    0% { transform: translateX(0); opacity: 1; }
-    40% { transform: translateX(1.5625rem); opacity: 1; }
-    50% { transform: translateX(1.5625rem); opacity: 0; }
-    60% { transform: translateX(-1.25rem); opacity: 0; }
-    70% { transform: translateX(-1.25rem); opacity: 1; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    40% {
+        transform: translateX(1.5625rem);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(1.5625rem);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(-1.25rem);
+        opacity: 0;
+    }
+    70% {
+        transform: translateX(-1.25rem);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 .pro .left .secondButton button:hover {
     background-color: white;
@@ -1149,75 +1251,207 @@ header .servicesList li:hover {
 }
 
 /* 64 characters with 5.625-degree spacing for better visibility */
-.pro .rotating-circles .circular-text span:nth-child(1) { transform: rotate(0deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(2) { transform: rotate(5.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(3) { transform: rotate(11.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(4) { transform: rotate(16.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(5) { transform: rotate(22.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(6) { transform: rotate(28.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(7) { transform: rotate(33.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(8) { transform: rotate(39.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(9) { transform: rotate(45deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(10) { transform: rotate(50.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(11) { transform: rotate(56.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(12) { transform: rotate(61.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(13) { transform: rotate(67.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(14) { transform: rotate(73.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(15) { transform: rotate(78.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(16) { transform: rotate(84.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(17) { transform: rotate(90deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(18) { transform: rotate(95.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(19) { transform: rotate(101.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(20) { transform: rotate(106.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(21) { transform: rotate(112.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(22) { transform: rotate(118.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(23) { transform: rotate(123.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(24) { transform: rotate(129.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(25) { transform: rotate(135deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(26) { transform: rotate(140.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(27) { transform: rotate(146.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(28) { transform: rotate(151.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(29) { transform: rotate(157.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(30) { transform: rotate(163.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(31) { transform: rotate(168.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(32) { transform: rotate(174.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(33) { transform: rotate(180deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(34) { transform: rotate(185.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(35) { transform: rotate(191.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(36) { transform: rotate(196.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(37) { transform: rotate(202.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(38) { transform: rotate(208.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(39) { transform: rotate(213.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(40) { transform: rotate(219.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(41) { transform: rotate(225deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(42) { transform: rotate(230.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(43) { transform: rotate(236.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(44) { transform: rotate(241.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(45) { transform: rotate(247.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(46) { transform: rotate(253.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(47) { transform: rotate(258.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(48) { transform: rotate(264.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(49) { transform: rotate(270deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(50) { transform: rotate(275.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(51) { transform: rotate(281.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(52) { transform: rotate(286.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(53) { transform: rotate(292.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(54) { transform: rotate(298.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(55) { transform: rotate(303.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(56) { transform: rotate(309.375deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(57) { transform: rotate(315deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(58) { transform: rotate(320.625deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(59) { transform: rotate(326.25deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(60) { transform: rotate(331.875deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(61) { transform: rotate(337.5deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(62) { transform: rotate(343.125deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(63) { transform: rotate(348.75deg) translateX(-50%); }
-.pro .rotating-circles .circular-text span:nth-child(64) { transform: rotate(354.375deg) translateX(-50%); }
+.pro .rotating-circles .circular-text span:nth-child(1) {
+    transform: rotate(0deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(2) {
+    transform: rotate(5.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(3) {
+    transform: rotate(11.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(4) {
+    transform: rotate(16.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(5) {
+    transform: rotate(22.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(6) {
+    transform: rotate(28.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(7) {
+    transform: rotate(33.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(8) {
+    transform: rotate(39.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(9) {
+    transform: rotate(45deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(10) {
+    transform: rotate(50.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(11) {
+    transform: rotate(56.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(12) {
+    transform: rotate(61.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(13) {
+    transform: rotate(67.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(14) {
+    transform: rotate(73.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(15) {
+    transform: rotate(78.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(16) {
+    transform: rotate(84.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(17) {
+    transform: rotate(90deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(18) {
+    transform: rotate(95.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(19) {
+    transform: rotate(101.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(20) {
+    transform: rotate(106.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(21) {
+    transform: rotate(112.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(22) {
+    transform: rotate(118.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(23) {
+    transform: rotate(123.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(24) {
+    transform: rotate(129.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(25) {
+    transform: rotate(135deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(26) {
+    transform: rotate(140.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(27) {
+    transform: rotate(146.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(28) {
+    transform: rotate(151.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(29) {
+    transform: rotate(157.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(30) {
+    transform: rotate(163.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(31) {
+    transform: rotate(168.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(32) {
+    transform: rotate(174.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(33) {
+    transform: rotate(180deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(34) {
+    transform: rotate(185.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(35) {
+    transform: rotate(191.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(36) {
+    transform: rotate(196.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(37) {
+    transform: rotate(202.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(38) {
+    transform: rotate(208.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(39) {
+    transform: rotate(213.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(40) {
+    transform: rotate(219.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(41) {
+    transform: rotate(225deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(42) {
+    transform: rotate(230.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(43) {
+    transform: rotate(236.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(44) {
+    transform: rotate(241.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(45) {
+    transform: rotate(247.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(46) {
+    transform: rotate(253.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(47) {
+    transform: rotate(258.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(48) {
+    transform: rotate(264.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(49) {
+    transform: rotate(270deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(50) {
+    transform: rotate(275.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(51) {
+    transform: rotate(281.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(52) {
+    transform: rotate(286.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(53) {
+    transform: rotate(292.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(54) {
+    transform: rotate(298.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(55) {
+    transform: rotate(303.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(56) {
+    transform: rotate(309.375deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(57) {
+    transform: rotate(315deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(58) {
+    transform: rotate(320.625deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(59) {
+    transform: rotate(326.25deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(60) {
+    transform: rotate(331.875deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(61) {
+    transform: rotate(337.5deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(62) {
+    transform: rotate(343.125deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(63) {
+    transform: rotate(348.75deg) translateX(-50%);
+}
+.pro .rotating-circles .circular-text span:nth-child(64) {
+    transform: rotate(354.375deg) translateX(-50%);
+}
 
 /* ... span nth-child rules for rotation ... */
 @keyframes rotateText {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 .pro .rotating-circles .inner-circle {
     width: 6.25rem;
@@ -1232,12 +1466,20 @@ header .servicesList li:hover {
     background-color: transparent;
 }
 @keyframes rotateClockwise {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 @keyframes rotateCounterClockwise {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(-360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
 }
 
 /* end pro */
@@ -1245,7 +1487,7 @@ header .servicesList li:hover {
 .app {
     padding: 5rem 2.5rem;
 }
-.content{
+.content {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1265,14 +1507,13 @@ header .servicesList li:hover {
     width: 50%;
 } */
 
-.app-info{
+.app-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     gap: 1.25rem;
     width: 50%;
-    
 }
 .app h2 {
     font-size: 2.5rem;
@@ -1699,12 +1940,11 @@ footer .lastLine p span:hover {
 }
 /* end footer */
 
-footer .links{
+footer .links {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-
 
 @media (max-width: 992px) {
     .menu-btn {
@@ -1716,30 +1956,63 @@ footer .links{
         justify-content: space-between;
         padding: 0.625rem;
     }
+    nav.menu-open {
+        padding: 0;
+        z-index: 1050;
+    }
 
-    nav .services{
+    nav .services {
         display: none;
     }
 
-    
+    nav .services.show-menu {
+        display: flex;
+        position: fixed; /* <--- This is the fix */
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+        z-index: 2000;
+        overflow-y: visible;
+    }
 
     /* --- Browse Section Adjustments --- */
-    .browse .options { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .browse { padding: 2rem 1rem; }
-
+    .browse .options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .browse {
+        padding: 2rem 1rem;
+    }
 }
 
 @media (max-width: 768px) {
-    header { height: auto; padding: 2rem 1rem; }
-    header h1 { font-size: 2.5rem; width: 90%; }
+    header {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+    header h1 {
+        font-size: 2.5rem;
+        width: 90%;
+    }
     header .search-container {
-        max-width: 95%; 
-        width: 95%; 
+        max-width: 95%;
+        width: 95%;
         display: flex;
         flex-direction: column;
-        align-items: center;}
+        align-items: center;
+    }
 
-    header .servicesList { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+    header .servicesList {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
     header .search-container input {
         width: 100%;
         max-width: 100%;
@@ -1752,19 +2025,29 @@ footer .links{
         margin-bottom: 1rem;
     }
 
-    header .search-container .inputs{
+    header .search-container .inputs {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 0.625rem;
         width: 100%;
-    } 
-    
-    .project { flex-direction: column; padding: 2rem 1rem; gap: 2rem; }
-    .project .leftPart { display: none; }
-    .project .projects .projectList { grid-template-columns: 1fr; }
+    }
 
-    .third { padding: 2rem 1.5rem; }
+    .project {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+    .project .leftPart {
+        display: none;
+    }
+    .project .projects .projectList {
+        grid-template-columns: 1fr;
+    }
+
+    .third {
+        padding: 2rem 1.5rem;
+    }
     .third .three {
         display: flex;
         overflow-x: auto;
@@ -1777,12 +2060,12 @@ footer .links{
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
-    .third .three::-webkit-scrollbar { 
-        display: none; 
+    .third .three::-webkit-scrollbar {
+        display: none;
     }
-    .third .three .container { 
-        flex: 0 0 85%; 
-        scroll-snap-align: start; 
+    .third .three .container {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
     }
     .third .scroll-dots {
         text-align: center;
@@ -1802,22 +2085,28 @@ footer .links{
         background-color: #d85151;
     }
 
-    .advice { padding: 2rem 1rem; }
-    .advice .advice-content { grid-template-columns: 1fr; }
+    .advice {
+        padding: 2rem 1rem;
+    }
+    .advice .advice-content {
+        grid-template-columns: 1fr;
+    }
 
-    .pro .right, .pro .rotating-circles { display: none; }
-    .pro .left { 
-        width: 100%; 
-        padding: 3rem 1.5rem; 
-        text-align: center; 
-        align-items: center; 
+    .pro .right,
+    .pro .rotating-circles {
+        display: none;
+    }
+    .pro .left {
+        width: 100%;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        align-items: center;
         justify-content: center;
     }
 
     .howItWork {
         padding: 2rem 1rem;
     }
-
 
     .howItWork .steps {
         display: flex;
@@ -1833,12 +2122,12 @@ footer .links{
         padding-top: 1rem;
     }
 
-    .howItWork .steps::-webkit-scrollbar { 
-        display: none; 
+    .howItWork .steps::-webkit-scrollbar {
+        display: none;
     }
-    .howItWork .steps .container { 
-        flex: 0 0 85%; 
-        scroll-snap-align: start; 
+    .howItWork .steps .container {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
     }
     .howItWork .scroll-dots {
         text-align: center;
@@ -1857,7 +2146,7 @@ footer .links{
     .howItWork .scroll-dots .dot.active {
         background-color: #d85151;
     }
-    
+
     .content {
         flex-direction: column;
         padding: 2.5rem;
@@ -1873,18 +2162,25 @@ footer .links{
         max-width: 100%;
     }
 
-    .pricing { padding: 2rem 1rem; }
-    .pricing .references { grid-template-columns: 1fr; }
+    .pricing {
+        padding: 2rem 1rem;
+    }
+    .pricing .references {
+        grid-template-columns: 1fr;
+    }
 
-
-    footer { padding: 2rem 1rem; }
-    footer .main-content { 
-        flex-direction: column; 
-        text-align: center; 
+    footer {
+        padding: 2rem 1rem;
+    }
+    footer .main-content {
+        flex-direction: column;
+        text-align: center;
         justify-content: center;
     }
 
-    footer .leftPart, footer .middle, footer .right {
+    footer .leftPart,
+    footer .middle,
+    footer .right {
         width: 100%;
         padding: 0;
     }
@@ -1899,9 +2195,186 @@ footer .links{
         align-items: center;
         padding-right: 0;
     }
-    
 }
 
 @media (max-width: 576px) {
-    .browse .options { grid-template-columns: 1fr; }
+    .browse .options {
+        grid-template-columns: 1fr;
+    }
+}
+body.dark-mode button:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+body.dark-mode .logo a,
+body.dark-mode .lightning ul li,
+body.dark-mode .services .dropdown-content,
+body.dark-mode .services .dropdown-content *,
+body.dark-mode .services .dropdown-group .group-label,
+body.dark-mode .services .dropdown .dropdown-button,
+body.dark-mode .dropdown-title,
+body.dark-mode .services a,
+body.dark-mode .browse h2,
+body.dark-mode .browse a,
+body.dark-mode .project .leftPart h2,
+body.dark-mode .project .projects h2,
+body.dark-mode .project .projects h3,
+body.dark-mode .project .projects a,
+body.dark-mode .project .projects p,
+body.dark-mode .third *,
+body.dark-mode .advice h2,
+body.dark-mode .advice .category,
+body.dark-mode .advice h3,
+body.dark-mode .advice a,
+body.dark-mode .howItWork h2,
+body.dark-mode .howItWork h3,
+body.dark-mode .app h2,
+body.dark-mode .pricing * {
+    color: #fff !important;
+}
+body.dark-mode .menu-btn,
+body.dark-mode .fa-moon,
+body.dark-mode .fa-user,
+body.dark-mode .howItWork .steps svg {
+    color: #fff !important;
+    fill: #fff !important;
+    border-color: #fff !important;
+}
+body.dark-mode .menu-btn:hover {
+    background-color: #111827 !important;
+}
+
+body.dark-mode,
+body.dark-mode nav,
+body.dark-mode nav *,
+body.dark-mode .main-content,
+body.dark-mode .lightning,
+body.dark-mode .browse *,
+body.dark-mode .browse,
+body.dark-mode .project,
+body.dark-mode .project *,
+body.dark-mode .third,
+body.dark-mode .third *,
+body.dark-mode .howItWork,
+body.dark-mode .howItWork *,
+body.dark-mode .app,
+body.dark-mode .pricing,
+body.dark-mode .pricing * {
+    background-color: #111827 !important;
+}
+body.dark-mode .browse .options svg {
+    background-color: #333d4c !important;
+    color: white;
+}
+body.dark-mode .project .leftPart *,
+body.dark-mode .project .leftPart {
+    background-color: #1d2735 !important;
+}
+body.dark-mode .project .leftPart img {
+    background-color: #343d4a !important;
+}
+body.dark-mode .third h3 {
+    background-color: transparent !important;
+}
+body.dark-mode .advice {
+    background-color: #1d2735 !important;
+}
+body.dark-mode .advice .category {
+    background-color: #333d4c !important;
+}
+body.dark-mode .app .content,
+body.dark-mode .app .content * {
+    background-color: #251e2b !important;
+}
+body.dark-mode .app p {
+    color: #bdc9ce !important;
+}
+body.dark-mode .app .app-buttons-container * {
+    background-color: #333d4c !important;
+}
+body.dark-mode .third div,
+body.dark-mode .pricing .references div {
+    border-color: #303643 !important;
+}
+body.dark-mode .pricing .references span {
+    color: #bdc9ce !important;
+}
+body.dark-mode button:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+/* New Overlay for the Nav Menu */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1500; /* Must be between nav (1000) and menu (2000) */
+}
+
+/* Show the new overlay when the menu is open */
+.menu-open .nav-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+/* Floating Customize Button Styles */
+.floating-customize-btn {
+    position: fixed; /* Makes the button float relative to the browser window */
+    top: 50%; /* Positions the top of the button at the vertical midpoint */
+    right: 0; /* Aligns the button to the right edge */
+    transform: translateY(-50%); /* Precisely centers the button vertically */
+    z-index: 999; /* Ensures it's on top of most content */
+    
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between the icon and text */
+
+    background-color: white;
+    border: 1px solid #e2e8f0; 
+    border-right: none; /* Remove the border that touches the edge of the screen */
+    padding: 10px 6px;
+    border-radius: 20px; /* Rounded corners on the left side */
+    
+    writing-mode: vertical-rl; /* Makes the text vertical */
+    /* text-orientation: mixed; */
+    
+    color: #4a5568; /* A dark grey color for text */
+    font-size: 12px;
+    font-weight: 600;
+    /* letter-spacing: 0.5px; */
+    /* cursor: pointer; */
+     box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+    transition: background-color 0.2s ease;
+}
+
+.floating-customize-btn:hover {
+    background-color: #f8f9fa; /* A slight grey on hover */
+}
+
+/* Ensure the icon and text inside don't have a background */
+.floating-customize-btn > * {
+    background-color: transparent;
+}
+
+/* Rotate the icon to be upright */
+.floating-customize-btn .fa-cog {
+    transform: rotate(90deg);
+    font-size: 16px; /* A slightly larger icon */
+    color: #4a5568;
+}
+.floating-customize-btn span {
+    padding:5px;
+    color: #4a5568;
+    font-size: 10px;
+    font-weight: 500; /* Bolder text */
+    /* letter-spacing: 1.5px; Increased letter spacing to match the image */
+    text-transform: uppercase;
+    transform: rotate(180deg); /* Flips the text to be upright */
 }
