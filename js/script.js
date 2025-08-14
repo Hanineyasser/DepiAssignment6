@@ -166,3 +166,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+// --- Settings Panel Logic ---
+document.addEventListener('DOMContentLoaded', function() {
+    const customizeBtn = document.querySelector('.floating-customize-btn');
+    const settingsPanel = document.querySelector('.settings-panel');
+    const closeBtn = document.querySelector('.settings-close-btn');
+    const settingsOverlay = document.querySelector('.settings-overlay');
+
+    // Make sure all elements exist before adding listeners
+    if (customizeBtn && settingsPanel && closeBtn && settingsOverlay) {
+        
+        const openPanel = () => {
+            settingsPanel.classList.add('show');
+            settingsOverlay.classList.add('active');
+            document.body.classList.add('freeze-scroll');
+        };
+
+        const closePanel = () => {
+            settingsPanel.classList.remove('show');
+            settingsOverlay.classList.remove('active');
+            document.body.classList.remove('freeze-scroll');
+        };
+
+        customizeBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        settingsOverlay.addEventListener('click', closePanel);
+    }
+});
