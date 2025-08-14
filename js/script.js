@@ -172,7 +172,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const settingsPanel = document.querySelector('.settings-panel');
     const closeBtn = document.querySelector('.settings-close-btn');
     const settingsOverlay = document.querySelector('.settings-overlay');
-
+ 
+    
     // Make sure all elements exist before adding listeners
     if (customizeBtn && settingsPanel && closeBtn && settingsOverlay) {
         
