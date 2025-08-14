@@ -2692,6 +2692,7 @@ input:checked + .slider:before {
     position: relative; /* Needed for positioning the color picker */
 }
 
+
 .color-picker-input {
     /* Style the color input to look like a swatch */
     /* -webkit-appearance: none;
